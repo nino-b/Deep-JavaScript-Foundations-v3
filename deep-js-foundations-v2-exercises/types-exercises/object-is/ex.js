@@ -1,19 +1,19 @@
 // TODO: define polyfill for `Object.is(..)`
-Object.is = function ObjectIs(param1, param2) {
-    console.log('parameters: ', param1, param2);
-    console.log('types: ', typeof param1, typeof param2);
-    //console.log('parameters compared: ', param1 === param2);
-
-    if (param1 === 0 || param2 === 0) {
-        return 1 / param1 === 1 / param2; 
-        /* 
-        1 / -0 = -Infinity. This is the way we can differenciate 0 and -0 from each other without Object.is(val);
-         */
+if (!Object.is || true) {
+    Object.is = function ObjectIs(param1, param2) {
+        console.log('parameters: ', param1, param2);
+        console.log('types: ', typeof param1, typeof param2);
+        //console.log('parameters compared: ', param1 === param2);
+    
+        if (param1 === 0 || param2 === 0) {
+            return 1 / param1 === 1 / param2; 
+            /* 1 / -0 = -Infinity. This is the way we can differenciate 0 and -0 from each other without Object.is(val);*/
+        }
+        if (param1 !== param1 && param2 !== param2) {
+            return true;
+        }
+        return param1 === param2;
     }
-    if (Number.isNaN(param1) && Number.isNaN(param2)) {
-        return true;
-    }
-    return param1 === param2;
 }
 
 

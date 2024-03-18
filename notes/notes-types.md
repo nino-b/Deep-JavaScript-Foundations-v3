@@ -96,3 +96,23 @@ function sign(n) {
 }
 ```
 - -0 Negative Zero might be useful if you want to show directions whether something is moving left or right or something like that.
+
+
+
+
+### Fundamental Objects / Native Object / Built-In Objects
+
+#### Use as constructors (create new instances)
+
+- new Object()
+- new Array()
+- new Function()
+- new Date()
+- new RexExp()
+- new Error()
+
+#### Recommended not to use as constructors. Only as functions (to coerce its value to a respective primitive type), (although new String(), new Number() and new Boolean() are also possible)
+
+- String()
+- Number()
+- Boolean()
