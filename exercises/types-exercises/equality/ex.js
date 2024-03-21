@@ -1,5 +1,27 @@
 // TODO: write `findAll(..)`
+function findAll(el, arr) {
+	const result = [];
+	for (const arrEl of arr) {
+		if (Object.is(arrEl, el)) {
+			result.push(arrEl);
+		} else if (arrEl == el) {
+			if (Object.is(el, 0) || Object.is(el, "0")) {
+				if (Object.is(arrEl, 0) || Object.is(arrEl, "0")) {
+					result.push(arrEl);
+				}
+			} else if (Object.is(arrEl, -0)){
+				if (Object.is(el, -0)) {
+					result.push(arrEl);
+				}
+			} else if (!Object.is(arrEl, -0) && !Object.is(el, -0) && typeof arrEl !== 'boolean' && typeof el !== "boolean" && !Object.is(arrEl, "")  && !Object.is(el, "")) {
+				result.push(arrEl);
+			}
 
+		}
+	}
+	console.log('result: ', result);
+	return result;
+} 
 
 // tests:
 var myObj = { a: 2 };
@@ -27,6 +49,7 @@ console.log('14',setsMatch(findAll("true",values),["true"]) === true);
 console.log('15',setsMatch(findAll(true,values),[true]) === true);
 console.log('16',setsMatch(findAll(false,values),[false]) === true);
 console.log('17',setsMatch(findAll(myObj,values),[myObj]) === true);
+
 console.log('18',setsMatch(findAll(null,values),[null,0]) === false);
 console.log('19',setsMatch(findAll(undefined,values),[NaN,0]) === false);
 console.log('20',setsMatch(findAll(0,values),[0,-0]) === false);
