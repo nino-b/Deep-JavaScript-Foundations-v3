@@ -16,7 +16,6 @@ function findAll(el, arr) {
 			} else if (!Object.is(arrEl, -0) && !Object.is(el, -0) && typeof arrEl !== 'boolean' && typeof el !== "boolean" && !Object.is(arrEl, "")  && !Object.is(el, "")) {
 				result.push(arrEl);
 			}
-
 		}
 	}
 	console.log('result: ', result);

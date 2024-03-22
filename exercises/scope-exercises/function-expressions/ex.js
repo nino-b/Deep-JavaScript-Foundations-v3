@@ -1,13 +1,40 @@
+function getStudentList(recordIds) {
+	const result = [];
+	recordIds.forEach(studentId => {
+		const student = studentRecords.find(function findEl(el) {
+			return el.id === studentId;
+		});
+		result.push(student);
+	});
+	return result;
+}
+
 function printRecords(recordIds) {
-	// TODO
+	const studentList = getStudentList(recordIds);
+
+	studentList.sort((a, b) => a.name.localeCompare(b.name));
+	studentList.forEach(el => {
+		console.log(`${el.name} (${el.id}): ${el.isPaid ? 'Paid' : 'Not Paid'}`);
+	});
 }
 
 function paidStudentsToEnroll() {
-	// TODO
+	const paid = studentRecords.reduce((acc, curr) => {
+		if (curr.paid) {
+			acc.push(curr.id);
+		}
+		return acc;
+	}, []);
+	return [...new Set([...currentEnrollment, ...paid])];
 }
 
 function remindUnpaid(recordIds) {
-	// TODO
+	const enrolled = getStudentList(recordIds);
+	enrolled.forEach(el => {
+		if (el.paid === false) {
+			console.log(`${el.name} (${el.id}): ${el.isPaid ? 'Paid' : 'Not Paid'}`);
+		}
+	})
 }
 
 
