@@ -18,6 +18,9 @@ There are four stages to a compiler:
 3. Parsing - turns stream of tokens into <b>Abstract Syntax Tree</b>.
 4. Code Generation - taking an abstract syntax tree and producing some kind of other executable form of that code.
 
+
+Detailed explanation:
+
 1. Lexing (Lexical Analysus).
     - Code is broken down into individual pieces (called lexemes) - keywords, identifiers, operators, literals.s
 2. Tokenization.
